@@ -1,0 +1,12 @@
+for mpep:
+rigbox/main/+dat/paths.m(?)
+visbox\mpep\Paths.m (??)
+
+for vs:
+rigbox/main/+dat/paths.m (for now same to master)
+visbox\Stimulus\RigInfoGet.m
+
+for timeline/stimline:
+rigbox/main/+dat/paths.m
+config_stimline_xxx.m
+
