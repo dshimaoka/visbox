@@ -14,13 +14,11 @@ end
 
 %server_market = 'C:\Users\Experiment\Documents\MATLAB\Data';%'\\zubjects.cortexlab.net';
 %server_market = '\\ad.monash.edu\home\User006\dshi0006\Documents\tempMarketServer';
-%server_market = '\\storage.erc.monash.edu.au\shares\MNHS-dshi0006'; %23/6/20
-server_market = 'M:'; %14/1/25
+server_market = 'M:'; %23/6/20
 
 %server_vault = 'C:\Users\Experiment\Documents\MATLAB\Data';%'\\zserver.cortexlab.net';
 %server_vault = '\\ad.monash.edu\home\User006\dshi0006\Documents\tempVaultServer';
-% server_vault = '\\vault-v2.erc.monash.edu.au\MNHS-dshi0006'; %23/6/20
-server_vault = 'V:'; %14/1/25
+server_vault = 'V:'; %23/6/20
 
 %% defaults
 % Repository for local copy of everything generated on this rig
@@ -41,7 +39,7 @@ p.vaultRepository = fullfile(server_vault, 'Subjects');
 
 % path containing rigbox config folders
 % p.rigbox = fullfile(zserverName, 'code', 'Rigging');
-p.rigbox = 'C:\Users\Experiment\Documents\MATLAB\visbox\rigbox';
+p.rigbox = 'C:\Users\Experiment\Documents\MATLAB\visbox';
 
 % directory for organisation-wide configuration files
 p.globalConfig = fullfile(p.rigbox, 'config');

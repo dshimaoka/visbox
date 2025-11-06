@@ -21,24 +21,16 @@
 % address = java.net.InetAddress.getLocalHost 
 % IPaddress = char(address.getHostAddress)
 
-global DIRS serverName server2Name server3Name
+global DIRS serverName 
 
 if isunix 
     serverName    = '/mnt/zserver';
-%     server2Name   = '/mnt/zserver2'; 
-    server2Name   = '/mnt/zserver';
-    server3Name   = '/mnt/zserver3';
     
     DIRS.Temp      = '/tmp';
 else   
-    serverName     = 'C:\Users\Experiment\Documents\MATLAB';%16/5/19
-    server2Name    = 'C:\Users\Experiment\Documents\MATLAB';%16/5/19 
-    server3Name    = 'C:\Users\Experiment\Documents\MATLAB';%16/5/19 
-    
-    serverName_alt     = 'C:\Users\Experiment\Documents\MATLAB';%16/5/19
-    server2Name_alt    = 'C:\Users\Experiment\Documents\MATLAB';%16/5/19
-    server3Name_alt    = 'C:\Users\Experiment\Documents\MATLAB';%16/5/19 
-    
+    %     serverName     = 'C:\Users\Experiment\Documents\MATLAB';%16/5/19
+    serverName = 'M:\';
+
     if isdir('D:\Temp')
         DIRS.Temp       = 'D:\Temp'; 
     else
@@ -47,45 +39,13 @@ else
     
 end
 
-if ~isdir(fullfile(serverName,'Data'))
-    if isdir(fullfile(serverName_alt,'Data'))
-        serverName = serverName_alt;
-    else
-        fprintf('Make sure directory %s is accessible!\n',fullfile(serverName,'Data'));
-    end
-end
-if ~isdir(fullfile(server2Name,'Data'))
-    if isdir(fullfile(server2Name_alt,'Data'))
-        server2Name = server2Name_alt;
-    else
-        fprintf('Make sure directory %s is accessible!\n',fullfile(server2Name,'Data'));
-    end
-end
-% if ~isdir(fullfile(server3Name,'Data'))
-%     if isdir(fullfile(server3Name_alt,'Data'))
-%         server3Name = server3Name_alt;
-%     else
-%         fprintf('Make sure directory %s is accessible!\n',fullfile(server3Name,'Data'));
-%     end
-% end
+% DIRS.data           = fullfile(serverName,'Data','Subjects'); % added 'Data' 14/6/19
+DIRS.data           = fullfile(serverName,'Subjects'); % removed 'Data' 14/5/25
+%DIRS.EyeTrack       = fullfile(serverName,'Data','EyeTrack');
 
-
-DIRS.data           = fullfile(serverName,'Data','Subjects'); % added 'Data' 14/6/19
-DIRS.spikes         = fullfile(serverName,'Data','Spikes');
-DIRS.camera         = fullfile(serverName,'Data','Intrinsic');
-DIRS.Intrinsic      = fullfile(serverName,'Data','Intrinsic'); % Piperico changed to zserver
-DIRS.EyeCamera      = fullfile(serverName,'Data','EyeCamera'); % Piperico changed to zserver 
-DIRS.EyeTrack       = fullfile(serverName,'Data','EyeTrack');
-
-DIRS.xfiles         = fullfile(server2Name,'Data','xfiles');
-
-DIRS.michigan       = fullfile(serverName,'Data','michigan');
-DIRS.Cerebus        = fullfile(serverName,'Data','Cerebus');
-DIRS.stimInfo       = fullfile(serverName,'Data','stimInfo');
-DIRS.behavior       = fullfile(serverName,'Data','behavior');
-DIRS.mouselogs      = fullfile(serverName,'Data','logs','mouse','behavior');
-DIRS.multichanspikes= fullfile(serverName,'Data','multichanspikes');
-DIRS.ball           = fullfile(serverName,'Subjects');
-DIRS.Stacks         = fullfile(server3Name,'Data','Stacks'); % Piperico changed to zserver3
-DIRS.expInfo        = fullfile(serverName,'Data','expInfo');
-%DIRS.oldData        = fullfile(server2Name,'Data','trodes');
+% DIRS.xfiles         = fullfile(server2Name,'Data','xfiles');
+DIRS.xfiles         = 'C:\Users\Experiment\Documents\git\stimFiles\xfiles';
+% DIRS.stimInfo       = fullfile(serverName,'Data','stimInfo');
+% DIRS.expInfo        = fullfile(serverName,'Data','expInfo');
+DIRS.stimInfo       = fullfile(serverName,'Subjects');
+DIRS.expInfo        = fullfile(serverName,'Subjects');
