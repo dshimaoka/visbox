@@ -21,7 +21,7 @@ timeline.AquiredDataType = 'single';
 %% Configure inputs
 
 % Set sample rate
-timeline.DaqSampleRate = 1000;%17/9/20
+timeline.DaqSampleRate = 10000;%1000;%17/9/20
 
 % Set up function for configuring inputs
 daq_input = @(name, channelID, measurement, terminalConfig) ...
@@ -44,7 +44,9 @@ timeline.Inputs = [...
     daq_input('DMDOut','ai5','Voltage','SingleEnded'),... %17/12/20
     daq_input('stimScreen','ai2','Voltage','SingleEnded'),...
     daq_input('amberLEDmonitor','ai11','Voltage','SingleEnded'),... %05/11/25
-    daq_input('redLEDmonitor','ai12','Voltage','SingleEnded'); %06/11/25
+    daq_input('redLEDmonitor','ai12','Voltage','SingleEnded'),...
+    daq_input('treadmillSpeed','ai7','Voltage','SingleEnded'),...%28/1/26
+    daq_input('treadmillDirection','ai15','Voltage','SingleEnded'); %28/1/26
     %< there is a delay between syncSquare and actual output on screen. usually syncsquare is earlier, delay size seems to depend on stimulus protocol 
     ];
     %daq_input('eyeCamStrobe', 'ai5', 'Voltage', 'SingleEnded')...
