@@ -19,7 +19,7 @@ server = 'M:';
 %% defaults
 % Repository for local copy of everything generated on this rig
 % p.localRepository = '\\zserver\Data\expInfo';%'C:\LocalExpData';
-p.localRepository = 'C:\LocalExpData';
+p.localRepository = 'E:\LocalExpData';
 % for all data types, under the new system of having data grouped by mouse
 % rather than data type
 p.mainRepository = fullfile(server, 'Subjects');
