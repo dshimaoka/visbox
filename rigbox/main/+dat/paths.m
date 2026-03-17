@@ -12,13 +12,9 @@ if nargin < 1 || isempty(rig)
   rig = thishost;
 end
 
-%server_market = 'C:\Users\Experiment\Documents\MATLAB\Data';%'\\zubjects.cortexlab.net';
-%server_market = '\\ad.monash.edu\home\User006\dshi0006\Documents\tempMarketServer';
-server_market = 'M:'; %23/6/20
-
-%server_vault = 'C:\Users\Experiment\Documents\MATLAB\Data';%'\\zserver.cortexlab.net';
-%server_vault = '\\ad.monash.edu\home\User006\dshi0006\Documents\tempVaultServer';
-server_vault = 'V:'; %23/6/20
+% server = 'S:\biomed-physiology\imaging-data\vsPC\Documents\MATLAB\Data';
+% server = 'C:\Users\Experiment\Documents\MATLAB\Data'; %14/5/25 disabled
+server = 'M:';
 
 %% defaults
 % Repository for local copy of everything generated on this rig
@@ -26,20 +22,19 @@ server_vault = 'V:'; %23/6/20
 p.localRepository = 'C:\LocalExpData';
 % for all data types, under the new system of having data grouped by mouse
 % rather than data type
-p.mainRepository = fullfile(server_market, 'Subjects');
+p.mainRepository = fullfile(server, 'Subjects');
 % Repository for info about experiments, i.e. stimulus, behavioural,
 % Timeline etc
 
-p.expInfoRepository = fullfile(server_market, 'Subjects'); %restored for mpep
+p.expInfoRepository = fullfile(server, 'Subjects'); %restored for mpep
 
-%for long-term storage  14/5/20 
-p.vaultRepository = fullfile(server_vault, 'Subjects');
+p.vaultRepository = fullfile(server, 'Subjects');
 
 %% for rig-specific configuration
 
 % path containing rigbox config folders
 % p.rigbox = fullfile(zserverName, 'code', 'Rigging');
-p.rigbox = 'C:\Users\Experiment\Documents\MATLAB\visbox';
+p.rigbox = 'C:\Users\Experiment\Documents\MATLAB\visbox\rigbox';
 
 % directory for organisation-wide configuration files
 p.globalConfig = fullfile(p.rigbox, 'config');

@@ -15,11 +15,11 @@ function RigInfo = RigInfoGet(VsHostName)
 %  MonitorType
 %  MonitorSize
 %  MonitorNumber
-%  DefaultMonitorDistance
+%  DefaultMonitorDistancevs
 %  zpepComputerName
 %  zpepComputerIP
 %  SyncSquare an object with fields Type, Position, Size
-%  WaveInfo
+%  W
 %  ColorChannels2Use
 %
 % 2011-02 Matteo Carandini extracted from vs and improved
@@ -29,7 +29,8 @@ function RigInfo = RigInfoGet(VsHostName)
 % 2012-08 AS added RigInfo.WaveInfo object specifications for
 %         zupervision back in to try new NI card
 % 2013-09 MC added ScaleOldStimuliFactor
-
+% 2022-05 NH added new case for MU00221314 for wf, changed zpep host name
+%         and IP
 %% deal with arguments
 
 if nargin < 1
@@ -107,42 +108,46 @@ switch upper(VsHostName)
         RigInfo.WaveInfo.FrameSyncChannel = 'port1/line0';
         RigInfo.ScaleOldStimuliFactor = 6;
    
+        
 
-    case 'MU00177020' %for wf
-        RigInfo.VsDisplayAdaptor = 'Nvidia Quadro P620';
+    case 'MU00177020' %for wf; new MPEP pc
+       RigInfo.VsDisplayAdaptor = 'Nvidia Quadro P620';
         RigInfo.MonitorType = 'Apple Ipad';
-        RigInfo.MonitorSize = 19.661;%24/7/20 %2*14.744; %20; % cm - short side 
-        RigInfo.DefaultMonitorDistance = 8;%24/7/20 %cm
-%        RigInfo.DefaultMonitorDistance = 4.9;%24/7/20 %cm 
-        RigInfo.VsDisplayScreen = 2; %19/5/20
+        RigInfo.MonitorSize = 14.744; %20; % cm - short side 
+        
+        %for geometry undistortion ... "stimproblem" from vs 18/11/24
+%          RigInfo.DefaultMonitorDistance = 8;%24/7/20 %cm
+         
+         %without geometry undistortion
+        RigInfo.DefaultMonitorDistance = 11.5;%cm
+        RigInfo.Geometry = 'Circular'; % 'Flat' or 'Circular'
+        RigInfo.HorizontalSpan = 209; % degrees of the overall span
+
+        RigInfo.VsDisplayScreen = 2;%0; %7/8/25
         RigInfo.VsHostCalibrationDir = 'C:\Users\Experiment\Documents\MATLAB\Calibrations\';
         RigInfo.WaveInfo.DAQAdaptor = 'ni'; %4/5/20
-        RigInfo.WaveInfo.DAQString = 'Dev1'; %4/5/20
-        RigInfo.WaveInfo.FrameSyncChannel = 'port0/line7'; %4/5/20
-        RigInfo.zpepComputerIP = '130.194.196.9';%17/6/19
-        RigInfo.zpepComputerName = 'MU00177749';%17/6/19
-        RigInfo.ColorChannels2Use = [0 0 1]; %31/7/19
-        if RigInfo.DefaultMonitorDistance == 8
-            RigInfo.SyncSquare.Size = 260;%240; %27/7/20
-        elseif RigInfo.DefaultMonitorDistance == 4.9
-            RigInfo.SyncSquare.Size = 320;%240; %15/10/20
-        end
-        
-        RigInfo.SyncSquare.Position = 'SouthWest';%17/9/20 
+        RigInfo.WaveInfo.DAQString = 'Dev3';%27/1/26 'Dev2'; %24/10/24
+        RigInfo.WaveInfo.FrameSyncChannel = 'port1/line7';%27/1/26 'port0/line7'; %4/5/20
+        RigInfo.zpepComputerIP = '130.194.196.61';%28/10/24
+        RigInfo.zpepComputerName = 'MU00189260';%28/10/24
+        RigInfo.ColorChannels2Use = [0 1 1]; %27/1/26
+        RigInfo.SyncSquare.Size = 110; %25/2/26
+       
+        RigInfo.SyncSquare.Position = 'SouthEast';%17/9/20 
         RigInfo.SyncSquare.Type = 'flicker';
-        RigInfo.SyncSquare.Angle = 50;%[deg] %50 30/7/20
+        RigInfo.SyncSquare.Angle = 0;%50;%[deg] %%7/2/21
         %RigInfo.BackgroundColor = [0 0 0];    %5/4/20 make sure syncsquare is black before exp
         
         %start waveOutput when receiving input on this port when
         %waveStim.TriggerType = HwDigital. see prepareSessionForStimuli
-        RigInfo.WaveInfo.ExtTriggerChannel = 'PFI0'; %25/9/20
+        RigInfo.WaveInfo.ExtTriggerChannel = 'PFI4';%27/1/26 'PFI0'; %25/9/20
         RigInfo.WaveInfo.TriggerCondition = 'RisingEdge';
-        RigInfo.WaveInfo.SampleRate = 1000;%NG >5000 in NI-USB60001
+        RigInfo.WaveInfo.SampleRate = 5000;%1000;%NG >5000 in NI-USB60001
         
         %     %Analog output channel to use for each row in the WaveStim
         RigInfo.WaveInfo.WaveStimChannel = 0:1;
 
-    case 'MU00188743' %for 2p
+    case 'MU00188743' %for 2pF
         RigInfo.VsDisplayScreen = 2;
         RigInfo.VsDisplayAdaptor = 'Nvidia Quadro P620';
         RigInfo.MonitorType = 'Apple Ipad';
@@ -171,7 +176,7 @@ switch upper(VsHostName)
         %waveStim.TriggerType = HwDigital. see prepareSessionForStimuli
         RigInfo.WaveInfo.ExtTriggerChannel = 'PFI12';
         RigInfo.WaveInfo.TriggerCondition = 'RisingEdge';
-        RigInfo.WaveInfo.SampleRate = 5000;%
+%         RigInfo.WaveInfo.SampleRate = 5000;%
         
         %     %Analog output channel to use for each row in the WaveStim
         RigInfo.WaveInfo.WaveStimChannel = 0:3;
