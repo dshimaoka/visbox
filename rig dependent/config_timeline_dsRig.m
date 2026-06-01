@@ -46,7 +46,8 @@ timeline.Inputs = [...
     daq_input('amberLEDmonitor','ai11','Voltage','SingleEnded'),... %05/11/25
     daq_input('redLEDmonitor','ai12','Voltage','SingleEnded'),...
     daq_input('treadmillSpeed','ai7','Voltage','SingleEnded'),...%28/1/26
-    daq_input('treadmillDirection','ai15','Voltage','SingleEnded'); %28/1/26
+    daq_input('treadmillDirection','ai15','Voltage','SingleEnded')... %28/1/26
+    daq_input('camStrobe','ai9','Voltage','SingleEnded'); %19/2/26
     %< there is a delay between syncSquare and actual output on screen. usually syncsquare is earlier, delay size seems to depend on stimulus protocol 
     ];
     %daq_input('eyeCamStrobe', 'ai5', 'Voltage', 'SingleEnded')...

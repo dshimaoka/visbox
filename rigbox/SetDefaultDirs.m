@@ -31,14 +31,9 @@ if isunix
     
     DIRS.Temp      = '/tmp';
 else   
-    serverName     = 'C:\Users\Experiment\Documents\MATLAB';%16/5/19
-    server2Name    = 'C:\Users\Experiment\Documents\MATLAB';%16/5/19 
-    server3Name    = 'C:\Users\Experiment\Documents\MATLAB';%16/5/19 
-    
-    serverName_alt     = 'C:\LocalExpData';%25/7/25 %'C:\Users\Experiment\Documents\MATLAB';%16/5/19 
-    server2Name_alt    = 'C:\LocalExpData';%25/7/25 %'C:\Users\Experiment\Documents\MATLAB';%16/5/19 'C:\LocalExpData';%25/7/25 'C:\Users\Experiment\Documents\MATLAB';%16/5/19
-    server3Name_alt    = 'C:\LocalExpData';%25/7/25 %'C:\Users\Experiment\Documents\MATLAB';%16/5/19 'C:\LocalExpData';%25/7/25 'C:\Users\Experiment\Documents\MATLAB';%16/5/19 
-    
+    %serverName     = 'C:\Users\Experiment\Documents\MATLAB';%4/11/25
+    serverName = 'M:\';
+
     if isdir('D:\Temp')
         DIRS.Temp       = 'D:\Temp'; 
     else

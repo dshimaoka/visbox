@@ -12,9 +12,16 @@ if nargin < 1 || isempty(rig)
   rig = thishost;
 end
 
-% server = 'S:\biomed-physiology\imaging-data\vsPC\Documents\MATLAB\Data';
-% server = 'C:\Users\Experiment\Documents\MATLAB\Data'; %14/5/25 disabled
-server = 'M:';
+%server_market = 'C:\Users\Experiment\Documents\MATLAB\Data';%'\\zubjects.cortexlab.net';
+%server_market = '\\ad.monash.edu\home\User006\dshi0006\Documents\tempMarketServer';
+%server_market = '\\storage.erc.monash.edu.au\shares\MNHS-dshi0006'; %23/6/20
+%server_market = 'M:'; %14/1/25
+server_market = '\\cephfs-smb-rds.erc.monash.edu\MNHS-dshi0006';%17/3/26
+
+% server_market = 'C:\Users\Experiment\Documents\MATLAB';%4/11/25
+%server_vault = 'C:\Users\Experiment\Documents\MATLAB\Data';%'\\zserver.cortexlab.net';
+%server_vault = '\\ad.monash.edu\home\User006\dshi0006\Documents\tempVaultServer';
+server_vault = 'V:'; %23/6/20
 
 %% defaults
 % Repository for local copy of everything generated on this rig
