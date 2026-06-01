@@ -15,7 +15,7 @@ function superSave(path, vars)
     if ~isempty(pathstr) && ~exist(pathstr, 'dir')
       mkdir(pathstr);
     end
-    save(fn, '-struct', 'vars');
+    save(fn, '-struct', 'vars','-v7.3');
   end
 
 if iscell(path)
