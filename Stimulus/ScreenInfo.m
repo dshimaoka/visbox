@@ -115,14 +115,15 @@ classdef ScreenInfo
                 
                 if RigInfo.DefaultMonitorDistance == 4.9
                     undistortionFile = 'C:\Users\Experiment\Documents\MATLAB\Undistortion\IpadLandscapeUndistortion_LabRigger_490mm.mat';
+                    PsychImaging('AddTask', 'AllViews', 'GeometryCorrection',undistortionFile);
                 elseif RigInfo.DefaultMonitorDistance == 8
                     undistortionFile = 'C:\Users\Experiment\Documents\MATLAB\Undistortion\IpadLandscapeUndistortion_LabRigger_800mm.mat';
+                    PsychImaging('AddTask', 'AllViews', 'GeometryCorrection',undistortionFile);
+                else
+                    [SI.windowPtr, SI.ScreenRect] = PsychImaging('OpenWindow', SI.WhichScreen, ...
+                        [], rect, pixdepth, [], [], [], kPsychNeed16BPCFloat,[],[0 0 2048 1536]);
                 end
-                PsychImaging('AddTask', 'AllViews', 'GeometryCorrection', undistortionFile);
                 
-%                 [SI.windowPtr, SI.ScreenRect] = PsychImaging('OpenWindow', SI.WhichScreen, ...
-%                 [], rect, pixdepth, [], [], [], kPsychNeed16BPCFloat,[],[0 0 2048 1536]);
-
                 [SI.windowPtr, SI.ScreenRect] = PsychImaging('OpenWindow', SI.WhichScreen, ...
                 [], rect, pixdepth, [], [], [], kPsychNeed16BPCFloat);
 
